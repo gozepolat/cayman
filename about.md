@@ -5,6 +5,7 @@ permalink: /about
 published: true
 verbose_header: true
 ---
+<img align="left" src="images/profile.gif?raw=True">
 Who am I? I am a machine learning engineer currently working in Berlin, and very busy with procrastinating the writing part of my PhD 
 dissertation on deep learning. At work, I've been enjoying shrinking up object detection models into a tiny size for embedded systems 
 lately, but my main "spare-time hobby" is creating bioinspired deep architectures using Keras and Tensorflow.

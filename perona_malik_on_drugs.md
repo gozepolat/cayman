@@ -5,8 +5,8 @@ permalink: /perona_malik_on_drugs
 published: true
 verbose_header: false
 ---
-
-Perona-Malik diffusion is a well known regularization technique that preserves edges while smoothing down the texture. 
+# [](#header-1) What is Perona-Malik Diffusion
+Perona-Malik diffusion is a well known regularization technique that preserves the edges while smoothing down the texture. 
 It is simply defined as: 
 
 $I_t = C(x,y,t) \nabla ^2I + \nabla C . \nabla I$ 
@@ -19,25 +19,26 @@ where $g$ is a monotonically decreasing, edge seeking function such as: $g\left(
 
 During the minimization, we normally use a constant kernel to calculate the gradients (i.e. the Laplace operator for $\nabla ^2$) at each step.
 
-#Perona-Malik with PyTorch
-As a machine learning engineer, and a PhD student, I have been enjoying PyTorch lately.The amount of flexibility and ease of use makes it 
-a great choice for both research and prototyping. Moreover, it is quite easy to use PyTorch for things other than deep learning. 
-Hence my experiments on Perona-Malik!
+# [](#header-1) Perona-Malik with PyTorch
+As a machine learning engineer, and a PhD student, I have been enjoying PyTorch lately. The amount of flexibility and ease of use makes it 
+a great choice for both research and prototyping. Moreover, it is quite easy to use PyTorch for things other than deep learning where you still need GPU acceleration; hence my experiments on Perona-Malik!
 
-I started implementing a vanilla version of Perona-Malik using PyTorch, where I initialized a convolutional layer as my Laplace operator. 
+I started implementing a vanilla version of Perona-Malik using PyTorch, where I initialized a convolutional layer as my Laplace operator. The convolutional kernel is initialized as below:
+```python
+[0.0,  1.0,  0.0]
+[1.0, -4.0,  1.0]
+[0.0,  1.0,  0.0]
+```
 Thanks to the utilization of GPU, the speed I get from such a simple implementation was pleasant.
-Yet, using PyTorch for nothing else, seemed like a waste, and although I have nothing against the good old Laplace operator, I decided to discard it!
-
-This allowed me to change the edge seeking property of $g$, with something undefined, and to be learned from the loss function, using gradient descent. 
-Here is a loss function that lets me generate all kinds of cool reaction-diffusion transformations:
+Yet, using PyTorch for nothing but GPU acceleration seemed like a waste, and although I have nothing against the good old Laplace operator, I decided to discard it! This allowed me to change the edge seeking property of $g$, 
+with something to be learned from the loss function using gradient descent. Depending on what we want from the transformations, it is possible to define various loss functions. Here is what I picked to generate all kinds of cool reaction-diffusion transformations:
 
 $$E[I, K] = \int (I_t - I_0) ^2 + \|K_t * I_{t-1}\| + I_t ^2$$
 
-where $I$ is the image and $K$ is the custom kernel that is being learned. ($I_t$ is the diffusing image, and $I_0$ is the original image.) 
-This loss function has the fidelity component (i.e. $(I_t - I_0)$) to keep the transformation closer to the original image,
+where $I$ is the image and $K$ is the custom kernel that is being learned. ($I_t$ is the diffusing image, and $I_0$ is the original image.) This loss function has the fidelity component (i.e. $(I_t - I_0)$) to keep the transformation closer to the original image,
 and it also penalizes the case where edges disappear by learning a $K$ that quickly increases intensity. Using this loss function, 
 and after finding the right diffusion rate vs learning rate, I observed aesthetically pleasing diffusion reaction transformations 
-which still temporarily preserve the edges to some extent. Here is one of my results:
+which still temporarily preserve the edges to some extent. Here is a gif I have made from one of my pictures:
 
 <p align="center">
    <img src="images/profile.gif?raw=True">

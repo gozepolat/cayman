@@ -6,7 +6,7 @@ published: true
 verbose_header: true
 ---
 <p align="center">
-   <img src="images/profile.gif?raw=True">
+   <img src="images/profile_11.png?raw=True">
 </p>
 Who am I? I am a machine learning engineer currently working in Berlin, and very busy with procrastinating the writing part of my PhD 
 dissertation on deep learning. At work, I've been enjoying shrinking up object detection models into a tiny size for embedded systems 

@@ -19,6 +19,7 @@ where $g$ is a monotonically decreasing, edge seeking function such as: $g\left(
 
 During the minimization, we normally use a constant kernel to calculate the gradients (i.e. the Laplace operator for $\nabla ^2$) at each step.
 
+
 # [](#header-1) Perona-Malik with PyTorch
 As a machine learning engineer, and a PhD student, I have been enjoying PyTorch lately. The amount of flexibility and ease of use makes it 
 a great choice for both research and prototyping. Moreover, it is quite easy to use PyTorch for things other than deep learning where you still need GPU acceleration; hence my experiments on Perona-Malik!
@@ -29,6 +30,8 @@ I started implementing a vanilla version of Perona-Malik using PyTorch, where I 
 [1.0, -4.0,  1.0]
 [0.0,  1.0,  0.0]
 ```
+
+# [](#header-1) Perona-Malik on Drugs
 Thanks to the utilization of GPU, the speed I get from such a simple implementation was pleasant.
 Yet, using PyTorch for nothing but GPU acceleration seemed like a waste, and although I have nothing against the good old Laplace operator, I decided to discard it! This allowed me to change the edge seeking property of $g$, 
 with something to be learned from the loss function using gradient descent. Depending on what we want from the transformations, it is possible to define various loss functions. Here is what I picked to generate all kinds of cool reaction-diffusion transformations:

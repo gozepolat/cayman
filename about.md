@@ -12,7 +12,7 @@ Who am I? I am a machine learning engineer currently working in Berlin, and very
 dissertation on deep learning. At work, I've been enjoying shrinking up object detection models into a tiny size for embedded systems 
 lately, but my main "spare-time hobby" is creating bioinspired deep architectures.
 
-Ah, if you have read this far, you probably got curious about the gif. It is from a pet project of mine, available [here](/perona_malik_on_drugs). I also have some normal hobbies such as chess, piano, sci-fi & fantasy books, poetry and drawing.
+Speaking of weird hobbies, if you are wondering how I created my profile picture, feel free to check it out [here](/perona_malik_on_drugs)!. I have some normal hobbies such as chess, piano, sci-fi & fantasy books, poetry and drawing.
 
 Who am I? Well, if you really want a longer answer, here is a philosophical one that will basically say either nothing or everything about me: 
 

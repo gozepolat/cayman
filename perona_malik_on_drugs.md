@@ -35,15 +35,15 @@ I started implementing a vanilla version of Perona-Malik using PyTorch, where I 
 
 # [](#header-1) Perona-Malik on Drugs
 Thanks to the utilization of GPU, the speed I get from such a simple implementation was pleasant.
-Yet, using PyTorch for nothing but GPU acceleration seemed like a waste, and although I have nothing against the good old Laplace operator, I decided to discard it! This allowed me to change the edge seeking property of $g$, 
+Yet, using PyTorch for nothing but GPU acceleration seemed like a waste, and although I had nothing against the good old Laplace operator, it just needed to.. uum accept change, and chill a bit! This allowed me to change the edge seeking property of $g$, 
 with something to be learned from the loss function using gradient descent. Depending on what we want from the transformations, it is possible to define various loss functions. Here is what I picked to generate all kinds of cool reaction-diffusion transformations:
 
 $E[I, K] = \int (I_t - I_0) ^2 + \|K_t * I_{t-1}\| + I_t ^2$
 
-where $I$ is the image and $K$ is the custom kernel that is being learned. ($I_t$ is the diffusing image, and $I_0$ is the original image.) This loss function has the fidelity component (i.e. $(I_t - I_0)$) to keep the transformation closer to the original image,
-and it also penalizes the case where edges disappear by learning a $K$ that quickly increases intensity. Using this loss function, 
+where $I$ is the image and $K$ is the custom kernel that is being learned. ($I_t$ is the diffusing image, and $I_0$ is the original image.) This loss function has the fidelity component $I_t - I_0$ to keep the transformation closer to the original image,
+it penalizes the case where edges disappear by learning a $K$ that quickly increases intensity. Using this loss function, 
 and after finding the right diffusion rate vs learning rate, I observed aesthetically pleasing diffusion reaction transformations 
-which still temporarily preserve the edges to some extent. Here is a gif I have made from one of my pictures:
+which were able to temporarily preserve the edges to some extent. Here is a gif I made from my profile picture using the "drugged" Perona-Malik:
 
 <p align="center">
    <img src="images/profile.gif?raw=True">

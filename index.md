@@ -2,5 +2,7 @@
 layout: default
 ---
 <p align="center">
-   <img src="images/profile_11.png?raw=True" href="/about">
+   <a href="/about">
+       <img src="images/profile_11.png?raw=True">
+   </a>
 </p>
